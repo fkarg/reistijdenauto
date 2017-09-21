@@ -1,3 +1,8 @@
-from django.shortcuts import render
+from rest_framework import viewsets
+from .serializers import WegStukSerializer
+from .models import WegStuk
 
-# Create your views here.
+
+class WegStukViewSet(viewsets.ReadOnlyModelViewSet):
+    serializer_class = WegStukSerializer
+    queryset = WegStuk.objects.all()
