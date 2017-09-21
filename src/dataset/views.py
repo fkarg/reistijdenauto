@@ -5,4 +5,4 @@ from .models import WegStuk
 
 class WegStukViewSet(viewsets.ReadOnlyModelViewSet):
     serializer_class = WegStukSerializer
-    queryset = WegStuk.objects.all()
+    queryset = WegStuk.objects.all().order_by('_id')

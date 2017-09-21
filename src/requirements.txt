@@ -1,6 +1,7 @@
 django==1.11
 djangorestframework
 djangorestframework-gis
+drf-hal-json
 markdown
 django-filter
 psycopg2
