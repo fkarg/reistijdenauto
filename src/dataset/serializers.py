@@ -10,5 +10,5 @@ class WegStukSerializer(HalModelSerializer):
     class Meta:
         model = WegStuk
         fields = (
-            '_id', 'name', '_type', 'timestamp', 'length', 'traveltime',
+            'id', 'name', 'type', 'timestamp', 'length', 'traveltime',
             'velocity', 'mline')

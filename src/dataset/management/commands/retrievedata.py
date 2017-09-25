@@ -16,9 +16,9 @@ from dataset.models import WegStuk
 TARGET = 'http://web.redant.net/~amsterdam/ndw/data/reistijdenAmsterdam.geojson'
 
 mapping = {
-    '_id': 'Id',
+    'id': 'Id',
     'name': 'Name',
-    '_type': 'Type',
+    'type': 'Type',
     'timestamp': 'Timestamp',
     'length': 'Length',
     'traveltime': 'Traveltime',

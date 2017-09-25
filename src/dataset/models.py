@@ -28,9 +28,9 @@ from django.contrib.gis.db import models
 
 
 class WegStuk(models.Model):
-    _id = models.CharField(max_length=100)
+    id = models.CharField(max_length=100, primary_key=True)
     name = models.CharField(max_length=255)
-    _type = models.CharField(max_length=255)
+    type = models.CharField(max_length=255)
     timestamp = models.DateTimeField(max_length=255)   # convert to datetime
     length = models.IntegerField()
     traveltime = models.IntegerField()
