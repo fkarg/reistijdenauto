@@ -26,7 +26,7 @@ docker-compose run --rm web retrievedata
 ```
 
 You now have:
-* a REST interface to the data running on localhost:8000/reistijdenauto/
+* a REST interface to the data running on http://localhost:8000/reistijdenauto/
 * a PostGIS database running on port 5432 containing the data
 * a mapserver with a WFS and WMS service running on port 8070
     * WMS: http://localhost:8070/maps/reistijdenauto?REQUEST=GetCapabilities&SERVICE=wms
