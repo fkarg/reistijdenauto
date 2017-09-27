@@ -36,7 +36,7 @@ class WegStuk(models.Model):
     traveltime = models.IntegerField()
     velocity = models.IntegerField()
 
-    mline = models.LineStringField()
+    mline = models.LineStringField(srid=28992)
 
     def __str__(self):
         return self.name
