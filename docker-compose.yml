@@ -23,3 +23,15 @@ services:
       bash -c "cd /app && \
                bash -c /app/docker-wait.sh && \
                python manage.py runserver 0.0.0.0:8000"
+
+  mapserver:
+    build: mapserver/
+    ports:
+      - "8070:80"
+    links:
+      - database
+    environment:
+      REISTIJDENAUTO_DB_NAME: reistijdenauto
+      REISTIJDENAUTO_DB_USER: reistijdenauto
+      REISTIJDENAUTO_DB_PASSWORD: insecure
+      REISTIJDENAUTO_DB_HOST: database
