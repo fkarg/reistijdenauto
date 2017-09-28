@@ -1,0 +1,20 @@
+version: "3.0"
+services:
+  database:
+    image: build.datapunt.amsterdam.nl:5000/atlas/postgres
+    environment:
+      POSTGRES_DB: reistijdenauto
+      POSTGRES_USER: reistijdenauto
+      POSTGRES_PASSWORD: insecure
+
+  tests:
+    build:
+      context: ../../
+    links:
+      - database
+    tmpfs:
+      - /tmp
+    command: >
+      bash -c "cd /app && \
+               bash -c /app/docker-wait.sh && \
+               python manage.py test"
