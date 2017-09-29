@@ -4,7 +4,7 @@ from django.test import TestCase
 
 from django.conf import settings
 from .models import WegStuk
-from .update import SanityCheckError, _parse_and_store_geojson
+from .update import _parse_and_store_geojson
 from django.contrib.gis.utils.layermapping import LayerMapError
 
 _GOOD_GEOJSON = os.path.join(settings.TESTDATA_DIR, 'reistijdenAmsterdam.geojson')

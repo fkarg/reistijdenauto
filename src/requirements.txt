@@ -6,3 +6,6 @@ markdown
 django-filter
 psycopg2
 requests
+
+pytest
+pytest-flake8
