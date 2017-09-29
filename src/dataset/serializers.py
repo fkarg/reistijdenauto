@@ -1,14 +1,15 @@
-from drf_hal_json.serializers import HalModelSerializer
 from rest_framework_gis.fields import GeometryField
+
 from .models import WegStuk
+from .rest import HALSerializer, DisplayField
 
 
-class WegStukSerializer(HalModelSerializer):
+class WegStukSerializer(HALSerializer):
     mline = GeometryField()
-    # 'URL_FIELD_NAME': 'self'  (should be set in REST_FRAMEWORK settings dict)
+    _display = DisplayField()
 
     class Meta:
         model = WegStuk
         fields = (
             'id', 'name', 'type', 'timestamp', 'length', 'traveltime',
-            'velocity', 'mline')
+            'velocity', 'mline', '_links', '_display')
