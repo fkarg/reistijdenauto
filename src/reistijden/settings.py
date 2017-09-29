@@ -127,8 +127,13 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
+
 REST_FRAMEWORK = {
     'DEFAULT_PAGINATION_CLASS': 'drf_hal_json.pagination.HalPageNumberPagination',
     'PAGE_SIZE': 100,
     'URL_FIELD_NAME': 'self',
 }
+
+
+# Directory for raw test data:
+TESTDATA_DIR = os.path.join(BASE_DIR, 'test_data')
