@@ -15,7 +15,7 @@ services:
     tmpfs:
       - /tmp
     command: >
-      bash -c "cd /app && \
+      bash -c "set -x; cd /app && \
                bash -c /app/docker-wait.sh && \
                pytest --flake8 \
                python manage.py test"
