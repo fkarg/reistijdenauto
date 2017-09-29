@@ -17,5 +17,5 @@ services:
     command: >
       bash -c "set -x; cd /app && \
                bash -c /app/docker-wait.sh && \
-               pytest --flake8 \
+               pytest --flake8 && \
                python manage.py test"
