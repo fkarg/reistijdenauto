@@ -1,4 +1,5 @@
 django==1.11
+django-debug-toolbar==1.7
 djangorestframework
 djangorestframework-gis
 drf-extensions
