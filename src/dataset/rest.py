@@ -1,5 +1,5 @@
 """
-Some basic HAL JSON API rendering functionality, taken from the momenten project.
+Some basic HAL JSON API rendering functionality, taken from the monumenten project.
 """
 
 from collections import OrderedDict
