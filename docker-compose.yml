@@ -23,6 +23,8 @@ services:
       bash -c "cd /app && \
                bash -c /app/docker-wait.sh && \
                python manage.py runserver 0.0.0.0:8000"
+    environment:
+      SECRET_KEY: insecure
 
   mapserver:
     build: mapserver/
