@@ -36,7 +36,6 @@ node {
             def image = docker.build("build.datapunt.amsterdam.nl:5000/datapunt/reistijdenauto:${env.BUILD_NUMBER}", "src")
             image.push()
         }
-
     }
 }
 
@@ -50,6 +49,18 @@ if (BRANCH == "master") {
                 def image = docker.image("build.datapunt.amsterdam.nl:5000/datapunt/reistijdenauto:${env.BUILD_NUMBER}")
                 image.pull()
                 image.push("acceptance")
+            }
+        }
+    }
+
+    node {
+        stage("Deploy to ACC") {
+            tryStep "deployment", {
+                build job: 'Subtask_Openstack_Playbook',
+                parameters: [
+                    [$class: 'StringParameterValue', name: 'INVENTORY', value: 'acceptance'],
+                    [$class: 'StringParameterValue', name: 'PLAYBOOK', value: 'deploy-reistijdenauto.yml'],
+                ]
             }
         }
     }
@@ -71,4 +82,15 @@ if (BRANCH == "master") {
         }
     }
 
+    node {
+        stage("Deploy") {
+            tryStep "deployment", {
+                build job: 'Subtask_Openstack_Playbook',
+                parameters: [
+                    [$class: 'StringParameterValue', name: 'INVENTORY', value: 'production'],
+                    [$class: 'StringParameterValue', name: 'PLAYBOOK', value: 'deploy-reistijdenauto.yml'],
+                ]
+            }
+        }
+    }
 }
