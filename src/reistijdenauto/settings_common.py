@@ -82,7 +82,6 @@ USE_TZ = True
 TESTING = len(sys.argv) > 1 and sys.argv[1] == 'test'
 
 
-
 REST_FRAMEWORK = {
     'PAGE_SIZE': 100,
     'URL_FIELD_NAME': 'self',

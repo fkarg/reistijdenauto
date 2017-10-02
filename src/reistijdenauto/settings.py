@@ -1,7 +1,7 @@
 import os
 
 from reistijdenauto.settings_common import * # noqa F403
-from reistijdenauto.settings_common import INSTALLED_APPS, DEBUG
+from reistijdenauto.settings_common import INSTALLED_APPS, DEBUG # noqa F401
 from reistijdenauto.settings_databases import LocationKey,\
     get_docker_host,\
     get_database_key,\
@@ -50,4 +50,4 @@ DATABASES = {
 }
 
 # Directory for raw test data:
-TESTDATA_DIR = os.path.join(BASE_DIR, 'test_data')
+TESTDATA_DIR = os.path.join(BASE_DIR, 'test_data') # noqa F405
