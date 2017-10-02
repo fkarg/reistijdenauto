@@ -13,3 +13,10 @@ COPY .jenkins/docker-migrate.sh /app/
 COPY requirements.txt /app/
 RUN pip install --no-cache-dir -r requirements.txt
 COPY . /app/
+
+USER datapunt
+
+RUN export DJANGO_SETTINGS_MODULE=reistijdenauto.settings
+
+CMD uwsgi
+
