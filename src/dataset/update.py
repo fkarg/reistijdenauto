@@ -26,7 +26,7 @@ MAPPING = {
     'velocity': 'Velocity',
     'mline': 'LINESTRING'
 }
-TEMP_DOWNLOAD_DIR = os.path.join('/', 'app', 'tmp')
+TEMP_DOWNLOAD_DIR = os.path.join('/', 'tmp')
 
 
 class SanityCheckError(Exception):
