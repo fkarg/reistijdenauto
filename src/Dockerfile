@@ -3,6 +3,7 @@ MAINTAINER datapunt@amsterdam.nl
 
 ENV PYTHONUNBUFFERED 1
 
+RUN mkdir -p /app/tmp
 WORKDIR /app
 
 

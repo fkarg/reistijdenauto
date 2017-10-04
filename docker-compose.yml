@@ -17,8 +17,6 @@ services:
       - database
     volumes:
       - "./src/:/app/"
-    tmpfs:
-      - /tmp
     command: >
       bash -c "cd /app && \
                bash -c /app/docker-wait.sh && \

@@ -15,7 +15,7 @@ logging.basicConfig(format=LOG_FORMAT, level=logging.DEBUG)
 logger = logging.getLogger(__name__)
 
 
-TARGET = 'http://web.redant.net/~amsterdam/ndw/data/reistijdenAmsterdam.geojson'
+REISTIJDEN_TARGET_URL = 'http://web.redant.net/~amsterdam/ndw/data/reistijdenAmsterdam.geojson'  # noqa
 MAPPING = {
     'id': 'Id',
     'name': 'Name',
@@ -26,6 +26,7 @@ MAPPING = {
     'velocity': 'Velocity',
     'mline': 'LINESTRING'
 }
+TEMP_DOWNLOAD_DIR = os.path.join('/', 'app', 'tmp')
 
 
 class SanityCheckError(Exception):
@@ -36,16 +37,14 @@ def download_and_update():
     """
     Download Reistijden GeoJSON and save it to the database.
     """
-    with tempfile.TemporaryDirectory(dir='/tmp') as temp_dir:
-        # TODO: research interactions of /tmp temporary directories and
-        # container file system LOOK FOR: --mount type=tempfs ...
-        temp_file = os.path.join(temp_dir, 'reistijdenAmsterdam.geojson')
+    with tempfile.TemporaryDirectory(dir=TEMP_DOWNLOAD_DIR) as temp_dir:
+        reistijden_jsonfile = os.path.join(temp_dir, 'reistijdenAmsterdam.geojson')
 
-        r = requests.get(TARGET)
-        with open(temp_file, 'w') as f:
+        r = requests.get(REISTIJDEN_TARGET_URL)
+        with open(reistijden_jsonfile, 'w') as f:
             f.write(r.text)
 
-        _parse_and_store_geojson(temp_file)
+        _parse_and_store_geojson(reistijden_jsonfile)
 
 
 def _parse_and_store_geojson(filename):
