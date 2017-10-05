@@ -2,6 +2,7 @@ django==1.11
 django-debug-toolbar==1.7
 djangorestframework
 djangorestframework-gis
+django-rest-swagger
 drf-extensions
 markdown
 django-filter

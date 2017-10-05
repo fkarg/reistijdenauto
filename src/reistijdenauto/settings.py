@@ -10,6 +10,7 @@ from reistijdenauto.settings_databases import LocationKey,\
 
 INSTALLED_APPS += [
     'dataset',
+    'rest_framework_swagger',
 ]
 
 ROOT_URLCONF = 'reistijdenauto.urls'
