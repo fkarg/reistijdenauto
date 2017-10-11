@@ -8,9 +8,8 @@ from reistijdenauto.settings_databases import LocationKey,\
     OVERRIDE_HOST_ENV_VAR,\
     OVERRIDE_PORT_ENV_VAR
 
-INSTALLED_APPS += [
+INSTALLED_APPS = [
     'dataset',
-    'rest_framework',
     'rest_framework_swagger',
 ]
 
