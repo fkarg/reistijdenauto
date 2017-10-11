@@ -5,11 +5,12 @@ Some basic HAL JSON API rendering functionality, taken from the monumenten proje
 from collections import OrderedDict
 
 from rest_framework import renderers, pagination, response, \
-    viewsets, filters
+    viewsets
 from rest_framework import serializers
 from rest_framework.utils.urls import replace_query_param
 
 from rest_framework_extensions.mixins import DetailSerializerMixin
+from django_filters.rest_framework import DjangoFilterBackend
 
 DEFAULT_RENDERERS = (renderers.JSONRenderer, renderers.BrowsableAPIRenderer)
 FORMATS = [dict(format=r.format, type=r.media_type) for r in DEFAULT_RENDERERS]
@@ -67,7 +68,7 @@ class HALPagination(pagination.PageNumberPagination):
 class DatapuntViewSet(DetailSerializerMixin, viewsets.ReadOnlyModelViewSet):
     renderer_classes = DEFAULT_RENDERERS
     pagination_class = HALPagination
-    filter_backends = (filters.DjangoFilterBackend,)
+    filter_backends = (DjangoFilterBackend,)
 
 
 class DisplayField(serializers.Field):

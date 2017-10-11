@@ -30,6 +30,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'django.contrib.gis',
 
+    'django_filters',
     'rest_framework',
 ]
 
@@ -97,9 +98,7 @@ REST_FRAMEWORK = dict(
         'rest_framework.renderers.BrowsableAPIRenderer'
     ),
     DEFAULT_FILTER_BACKENDS=(
-        'rest_framework.filters.DjangoFilterBackend',
-        # 'rest_framework.filters.OrderingFilter',
-
+        'django_filters.rest_framework.DjangoFilterBackend',
     ),
     COERCE_DECIMAL_TO_STRING=True,
 )
