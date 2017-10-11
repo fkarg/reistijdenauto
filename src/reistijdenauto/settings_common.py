@@ -23,10 +23,7 @@ INTERNAL_IPS = ('127.0.0.1', '0.0.0.0')
 # Application definition
 
 INSTALLED_APPS = [
-    'django.contrib.auth',
     'django.contrib.contenttypes',
-    'django.contrib.sessions',
-    'django.contrib.messages',
     'django.contrib.staticfiles',
     'django.contrib.gis',
 
@@ -34,21 +31,14 @@ INSTALLED_APPS = [
     'rest_framework',
 ]
 
-if DEBUG:
-    INSTALLED_APPS += ('debug_toolbar',)
-
-
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
-    'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
-    'django.middleware.csrf.CsrfViewMiddleware',
-    'django.contrib.auth.middleware.AuthenticationMiddleware',
-    'django.contrib.messages.middleware.MessageMiddleware',
-    'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'debug_toolbar.middleware.DebugToolbarMiddleware',
 ]
 
+if DEBUG:
+    INSTALLED_APPS += ['debug_toolbar']
+    MIDDLEWARE.insert(0, 'debug_toolbar.middleware.DebugToolbarMiddleware')
 
 TEMPLATES = [
     {
@@ -59,8 +49,6 @@ TEMPLATES = [
             'context_processors': [
                 'django.template.context_processors.debug',
                 'django.template.context_processors.request',
-                'django.contrib.auth.context_processors.auth',
-                'django.contrib.messages.context_processors.messages',
             ],
         },
     },
@@ -101,6 +89,7 @@ REST_FRAMEWORK = dict(
         'django_filters.rest_framework.DjangoFilterBackend',
     ),
     COERCE_DECIMAL_TO_STRING=True,
+    UNAUTHENTICATED_USER=None,
 )
 
 # Static files (CSS, JavaScript, Images)
