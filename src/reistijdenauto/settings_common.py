@@ -79,6 +79,9 @@ REST_FRAMEWORK = {
 REST_FRAMEWORK = dict(
     PAGE_SIZE=100,
 
+    UNAUTHENTICATED_USER={},
+    UNAUTHENTICATED_TOKEN={},
+
     MAX_PAGINATE_BY=100,
 
     DEFAULT_RENDERER_CLASSES=(
@@ -89,7 +92,6 @@ REST_FRAMEWORK = dict(
         'django_filters.rest_framework.DjangoFilterBackend',
     ),
     COERCE_DECIMAL_TO_STRING=True,
-    UNAUTHENTICATED_USER=None,
 )
 
 # Static files (CSS, JavaScript, Images)
