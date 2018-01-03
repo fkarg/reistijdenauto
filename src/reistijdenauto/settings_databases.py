@@ -27,7 +27,7 @@ def in_docker():
     """
     try:
         return ':/docker/' in open('/proc/1/cgroup', 'r').read()
-    except:
+    except:  # noqa
         return False
 
 
