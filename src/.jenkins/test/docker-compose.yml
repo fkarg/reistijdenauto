@@ -19,6 +19,3 @@ services:
                bash -c /app/docker-wait.sh && \
                pytest --flake8 && \
                python manage.py test"
-    environment:
-      http_proxy:
-      https_proxy:

@@ -22,8 +22,6 @@ services:
                bash -c /app/docker-wait.sh && \
                python manage.py runserver 0.0.0.0:8000"
     environment:
-      http_proxy:
-      https_proxy:
       SECRET_KEY: insecure
 
   mapserver:
