@@ -33,9 +33,9 @@ node {
 
     stage("Build image") {
         tryStep "build", {
-            docker.withRegistry('https://repo.data.amsterdam.nl','docker-registry') {
-            def image = docker.build("datapunt/reistijdenauto:${env.BUILD_NUMBER}", "src")
-            image.push()
+                docker.withRegistry("${DOCKER_REGISTRY_HOST}",'docker_registry_auth') {
+                    def image = docker.build("datapunt/reistijdenauto:${env.BUILD_NUMBER}", "src")
+                    image.push()
             }
         }
     }
@@ -49,10 +49,10 @@ if (BRANCH == "master") {
     node {
         stage('Push acceptance image') {
             tryStep "image tagging", {
-            docker.withRegistry('https://repo.data.amsterdam.nl','docker-registry') {
-                def image = docker.image("datapunt/reistijdenauto:${env.BUILD_NUMBER}")
-                image.pull()
-                image.push("acceptance")
+                docker.withRegistry("${DOCKER_REGISTRY_HOST}",'docker_registry_auth') {
+                    def image = docker.image("datapunt/reistijdenauto:${env.BUILD_NUMBER}")
+                    image.pull()
+                    image.push("acceptance")
                 }
             }
         }
@@ -78,8 +78,8 @@ if (BRANCH == "master") {
     node {
         stage('Push production image') {
             tryStep "image tagging", {
-            docker.withRegistry('https://repo.data.amsterdam.nl','docker-registry') {
-                def image = docker.image("datapunt/reistijdenauto:${env.BUILD_NUMBER}")
+                docker.withRegistry("${DOCKER_REGISTRY_HOST}",'docker_registry_auth') {
+                    def image = docker.image("datapunt/reistijdenauto:${env.BUILD_NUMBER}")
                     image.pull()
                     image.push("production")
                     image.push("latest")
