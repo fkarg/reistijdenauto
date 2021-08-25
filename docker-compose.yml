@@ -25,7 +25,7 @@ services:
       SECRET_KEY: insecure
 
   mapserver:
-    build: mapserver/
+    build: https://github.com/Amsterdam/mapserver.git
     ports:
       - "8070:80"
     links:
@@ -35,3 +35,6 @@ services:
       REISTIJDENAUTO_DB_USER: reistijdenauto
       REISTIJDENAUTO_DB_PASSWORD: insecure
       REISTIJDENAUTO_DB_HOST: database
+
+      MAP_URL: "http://mapserver"
+      LEGEND_URL: "http://mapserver"

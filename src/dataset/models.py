@@ -33,8 +33,8 @@ class WegStuk(models.Model):
     type = models.CharField(max_length=255)
     timestamp = models.DateTimeField(max_length=255)   # convert to datetime
     length = models.IntegerField()
-    traveltime = models.IntegerField()
-    velocity = models.IntegerField()
+    traveltime = models.IntegerField(null=True)
+    velocity = models.IntegerField(null=True)
 
     mline = models.LineStringField(srid=28992)
 

@@ -78,6 +78,8 @@ REST_FRAMEWORK = {
 
 REST_FRAMEWORK = dict(
     PAGE_SIZE=100,
+    DEFAULT_PAGINATION_CLASS='rest_framework.pagination.PageNumberPagination',
+
 
     UNAUTHENTICATED_USER={},
     UNAUTHENTICATED_TOKEN={},
